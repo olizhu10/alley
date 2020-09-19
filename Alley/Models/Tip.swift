@@ -1,5 +1,5 @@
 //
-//  TIp.swift
+//  Tip.swift
 //  Alley
 //
 //  Created by Olivia on 9/19/20.
@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+class Tip {
+    var content:String
+    var id:Int?
+    
+    init(content:String) {
+        self.content = content
+    }
+}

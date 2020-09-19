@@ -6,6 +6,10 @@ target 'Alley' do
   use_frameworks!
 
   # Pods for Alley
+  # add pods for desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'AlleyTests' do
     inherit! :search_paths

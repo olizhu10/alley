@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FC03C3A2516614000A9E079 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C392516614000A9E079 /* User.swift */; };
+		2FC03C3C2516623E00A9E079 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3B2516623E00A9E079 /* Post.swift */; };
+		2FC03C3E2516624700A9E079 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3D2516624700A9E079 /* Tip.swift */; };
 		4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3622515AE9500A87A24 /* AppDelegate.swift */; };
 		4326B3652515AE9500A87A24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3642515AE9500A87A24 /* ViewController.swift */; };
 		4326B3682515AE9500A87A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4326B3662515AE9500A87A24 /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 /* Begin PBXFileReference section */
 		23C420393415A1B244770368 /* Pods-AlleyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlleyTests.release.xcconfig"; path = "Target Support Files/Pods-AlleyTests/Pods-AlleyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2ECC3B9336F8A95DC7B9C977 /* Pods_Alley_AlleyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alley_AlleyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FC03C392516614000A9E079 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2FC03C3B2516623E00A9E079 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		2FC03C3D2516624700A9E079 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		4326B35F2515AE9500A87A24 /* Alley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4326B3622515AE9500A87A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4326B3642515AE9500A87A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +105,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2FC03C38251660CB00A9E079 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2FC03C392516614000A9E079 /* User.swift */,
+				2FC03C3B2516623E00A9E079 /* Post.swift */,
+				2FC03C3D2516624700A9E079 /* Tip.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4326B3562515AE9500A87A24 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +140,7 @@
 		4326B3612515AE9500A87A24 /* Alley */ = {
 			isa = PBXGroup;
 			children = (
+				2FC03C38251660CB00A9E079 /* Models */,
 				4326B3622515AE9500A87A24 /* AppDelegate.swift */,
 				4326B3642515AE9500A87A24 /* ViewController.swift */,
 				4326B3662515AE9500A87A24 /* Main.storyboard */,
@@ -162,7 +179,6 @@
 				4F6B00F1B08891FE7D17EFF2 /* Pods-AlleyTests.debug.xcconfig */,
 				23C420393415A1B244770368 /* Pods-AlleyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -177,6 +193,7 @@
 				4326B35B2515AE9500A87A24 /* Sources */,
 				4326B35C2515AE9500A87A24 /* Frameworks */,
 				4326B35D2515AE9500A87A24 /* Resources */,
+				9BD6D5EEA95AF1D59F3A009F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,6 +231,7 @@
 				4326B37A2515AE9900A87A24 /* Sources */,
 				4326B37B2515AE9900A87A24 /* Frameworks */,
 				4326B37C2515AE9900A87A24 /* Resources */,
+				C4C7562352C0BDF3999DC3FD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -362,6 +380,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9BD6D5EEA95AF1D59F3A009F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alley/Pods-Alley-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alley/Pods-Alley-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alley/Pods-Alley-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4C7562352C0BDF3999DC3FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alley-AlleyUITests/Pods-Alley-AlleyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alley-AlleyUITests/Pods-Alley-AlleyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alley-AlleyUITests/Pods-Alley-AlleyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -371,6 +423,9 @@
 			files = (
 				4326B3652515AE9500A87A24 /* ViewController.swift in Sources */,
 				4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */,
+				2FC03C3A2516614000A9E079 /* User.swift in Sources */,
+				2FC03C3E2516624700A9E079 /* Tip.swift in Sources */,
+				2FC03C3C2516623E00A9E079 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
