@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         continueButton.setTitle("continue", for: .normal)
         continueButton.setTitleColor(.blue, for: .normal)
-        continueButton.addTarget(self, action: #selector(pushDashViewController), for: .touchUpInside)
+        continueButton.addTarget(self, action: #selector(presentDashViewController), for: .touchUpInside)
         view.addSubview(continueButton)
 
         setupConstraints()
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             ])
     }
     
-    @objc func pushDashViewController() {
+    @objc func presentDashViewController() {
         let dashViewController = DashViewController()
 //        dashViewController.delegate = self
 //        self.navigationController?.pushViewController(dashViewController, animated: true)
