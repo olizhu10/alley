@@ -10,7 +10,6 @@
 		2FC03C3A2516614000A9E079 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C392516614000A9E079 /* User.swift */; };
 		2FC03C3C2516623E00A9E079 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3B2516623E00A9E079 /* Post.swift */; };
 		2FC03C3E2516624700A9E079 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3D2516624700A9E079 /* Tip.swift */; };
-		2FC03C4025168AEB00A9E079 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3F25168AEB00A9E079 /* DashViewController.swift */; };
 		4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3622515AE9500A87A24 /* AppDelegate.swift */; };
 		4326B3652515AE9500A87A24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3642515AE9500A87A24 /* ViewController.swift */; };
 		4326B3682515AE9500A87A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4326B3662515AE9500A87A24 /* Main.storyboard */; };
@@ -46,7 +45,7 @@
 		2FC03C392516614000A9E079 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2FC03C3B2516623E00A9E079 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2FC03C3D2516624700A9E079 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
-		2FC03C3F25168AEB00A9E079 /* DashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashViewController.swift; path = "../../../Library/Containers/com.apple.mail/Data/Library/Mail Downloads/BC934077-72C4-43DC-9026-4F9296D55A3F/DashViewController.swift"; sourceTree = "<group>"; };
+		2FC03C4225168C5200A9E079 /* DashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
 		4326B35F2515AE9500A87A24 /* Alley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4326B3622515AE9500A87A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4326B3642515AE9500A87A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +116,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		2FC03C4125168C4B00A9E079 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4326B3642515AE9500A87A24 /* ViewController.swift */,
+				2FC03C4225168C5200A9E079 /* DashViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		4326B3562515AE9500A87A24 = {
 			isa = PBXGroup;
 			children = (
@@ -142,10 +150,9 @@
 		4326B3612515AE9500A87A24 /* Alley */ = {
 			isa = PBXGroup;
 			children = (
-				2FC03C3F25168AEB00A9E079 /* DashViewController.swift */,
+				2FC03C4125168C4B00A9E079 /* Controllers */,
 				2FC03C38251660CB00A9E079 /* Models */,
 				4326B3622515AE9500A87A24 /* AppDelegate.swift */,
-				4326B3642515AE9500A87A24 /* ViewController.swift */,
 				4326B3662515AE9500A87A24 /* Main.storyboard */,
 				4326B3692515AE9800A87A24 /* Assets.xcassets */,
 				4326B36B2515AE9800A87A24 /* LaunchScreen.storyboard */,
@@ -428,7 +435,6 @@
 				4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */,
 				2FC03C3A2516614000A9E079 /* User.swift in Sources */,
 				2FC03C3E2516624700A9E079 /* Tip.swift in Sources */,
-				2FC03C4025168AEB00A9E079 /* DashViewController.swift in Sources */,
 				2FC03C3C2516623E00A9E079 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
