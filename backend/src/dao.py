@@ -48,7 +48,6 @@ def delete_user_by_id(user_id):
 
 
 def get_all_posts():
-    print("here")
     return [p.serialize() for p in Post.query.all()]
 
 
