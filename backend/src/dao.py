@@ -47,6 +47,17 @@ def delete_user_by_id(user_id):
 # ----POSTS----------------------------------------------------------------------
 
 
+def get_all_posts():
+    return [p.serialize() for p in Post.query.all()]
+
+
+def get_post_by_id(post_id):
+    post = Post.query.filter_by(id=post_ud).first()
+    if post is None:
+        return None
+    return post.serialize()
+
+
 def create_post(content, user_id):
     new_post = Post(
         content=content,
@@ -58,4 +69,43 @@ def create_post(content, user_id):
     return new_post.serialize()
 
 
+def delete_post_by_id(post_id):
+    post = Post.query.filter_by(id=post_id).first()
+    if post is None:
+        return None
+    db.session.delete(post)
+    db.session.commit()
+    return post.serialize()
+
 # ----TIPS-----------------------------------------------------------------------
+
+
+def get_tips():
+    return [t.serialize() for t in Tip.query.all()]
+
+
+def get_tip_by_id(tip_id):
+    tip = Tip.query.filter_by(id=tip_id).first()
+    if tip is None:
+        return None
+    return tip.serialize()
+
+
+def create_tip(title, content):
+    new_tip = Tip(
+        title=title,
+        content=content
+    )
+
+    db.session.add(new_tip)
+    db.session.commit()
+    return new_tip.serialize()
+
+
+def delete_tip_by_id(tip_id):
+    tip = Tip.query.filter_by(id=tip_id).first()
+    if tip is None:
+        return None
+    db.session.delete(tip)
+    db.session.commit()
+    return tip.serialize()
