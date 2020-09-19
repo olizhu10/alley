@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import json
 
+
 db = SQLAlchemy()
 
 
@@ -48,9 +49,9 @@ class Tip(db.Model):
         self.title = kwargs.get('title')
         self.content = kwargs.get('content')
 
-        def serialize(self):
+    def serialize(self):
         return {
             'id': self.id,
-            'title': self.title
+            'title': self.title,
             'content': self.content
         }

@@ -3,11 +3,12 @@ from flask import Flask, request
 from db import db, User, Post, Tip
 import dao
 
+
+db_filename = "alley.db"
 app = Flask(__name__)
-db_filename = 'app.db'
 
 # setup config
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:////{db_filename}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_filename}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
@@ -63,7 +64,7 @@ def get_posts():
     return success_response(dao.get_all_posts, 201)
 
 
-@app.route("/posts/<int:post_id")
+@app.route("/posts/<int:post_id>")
 def get_post(post_id):
     post = dao.get_post_by_id(post_id)
     if post is None:
