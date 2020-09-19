@@ -18,7 +18,7 @@ def create_user(name):
 
 
 def get_user_by_id(user_id):
-    user = User.query.filter_by(id=user_ud).first()
+    user = User.query.filter_by(id=user_id).first()
     if user is None:
         return None
     return user.serialize()
@@ -48,11 +48,12 @@ def delete_user_by_id(user_id):
 
 
 def get_all_posts():
+    print("here")
     return [p.serialize() for p in Post.query.all()]
 
 
 def get_post_by_id(post_id):
-    post = Post.query.filter_by(id=post_ud).first()
+    post = Post.query.filter_by(id=post_id).first()
     if post is None:
         return None
     return post.serialize()
