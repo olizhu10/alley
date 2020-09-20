@@ -49,7 +49,8 @@ class TagViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         view.addSubview(backButton)
         
         posts = tag.posts
-        print(posts[0].content)
+        print(posts)
+//        print(posts[0].content)
         postTableView = UITableView(frame: .zero)
         postTableView.translatesAutoresizingMaskIntoConstraints = false
         postTableView.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)

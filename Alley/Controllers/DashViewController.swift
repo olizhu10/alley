@@ -67,16 +67,16 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(tagTableView)
         
         
-        let pimm = Post(content:"Immigration is crazy I am an immigrant adkfjlkadjlfkjkdlafjlkdsjfkljadsklfjakdlsfjkladsjfkld jskalfjkldjfkl", user_id: 1, tag_id: 1)
-        let prac = Post(content: "racism is bad dont be racist", user_id: 1, tag_id: 1)
-        let pgen = Post(content: "women should be equal i am a woman", user_id: 1, tag_id: 1)
-        let pcom = Post(content: "we should be in a supportive community", user_id: 1, tag_id: 1)
-        
+//        let pimm = Post(content:"Immigration is crazy I am an immigrant adkfjlkadjlfkjkdlafjlkdsjfkljadsklfjakdlsfjkladsjfkld jskalfjkldjfkl", user_id: 1, tag_id: 1)
+//        let prac = Post(content: "racism is bad dont be racist", user_id: 1, tag_id: 1)
+//        let pgen = Post(content: "women should be equal i am a woman", user_id: 1, tag_id: 1)
+//        let pcom = Post(content: "we should be in a supportive community", user_id: 1, tag_id: 1)
+//
 //        let immPosts = [pimm, prac]
 //        let racPosts = [pgen, pcom]
 
 
-<<<<<<< HEAD
+
 //        let imm = Tag(label: "#immigration")
 //        let rac = Tag(label: "#racism")
 //        let gen = Tag(label: "#gender inequality")
@@ -107,6 +107,12 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tagTableView.allowsSelection = true
         
         getTags()
+//        Networking.shared.getTag(forTag: 1) { (tag) in
+//            print(tag.label)
+//        }
+//        Networking.shared.getPost(forPost: 1) { (post) in
+//            print(post.content)
+//        }
         setupConstraints()
 
 
@@ -137,7 +143,6 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getTags() {
         Networking.shared.getTags() { (tags) in
-            print("hereeeeee")
             self.tags = Tag.toTags(tags: tags)
             DispatchQueue.main.async {
                 self.tagTableView.reloadData()

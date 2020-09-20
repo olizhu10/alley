@@ -13,7 +13,7 @@ class Tag {
     var id: Int?
     var posts: [Post]
     
-    init(label:String) {
+    init(label:String) {//, posts: [Post]) {
         self.label = label
         self.posts = []
     }
@@ -24,10 +24,10 @@ class Tag {
         }
         var res : [Tag] = []
         for tag in tags! {
-            res.append(Tag(label:tag.label))
+            let new_tag = Tag(label:tag.label)
+            new_tag.posts = Post.toPosts(posts: tag.posts)
+            res.append(new_tag) //, posts:Post.toPosts(posts: tag.data.posts)))
         }
-        print("totags")
-        print(res)
         return res
     }
 }
