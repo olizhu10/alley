@@ -10,8 +10,6 @@
 		2FC03C3A2516614000A9E079 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C392516614000A9E079 /* User.swift */; };
 		2FC03C3C2516623E00A9E079 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3B2516623E00A9E079 /* Post.swift */; };
 		2FC03C3E2516624700A9E079 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3D2516624700A9E079 /* Tip.swift */; };
-		2FC03C442516A16900A9E079 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C432516A16900A9E079 /* DashViewController.swift */; };
-		2FC03C462516A4A800A9E079 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FC03C452516A4A700A9E079 /* GoogleService-Info.plist */; };
 		4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3622515AE9500A87A24 /* AppDelegate.swift */; };
 		4326B3652515AE9500A87A24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3642515AE9500A87A24 /* ViewController.swift */; };
 		4326B3682515AE9500A87A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4326B3662515AE9500A87A24 /* Main.storyboard */; };
@@ -19,6 +17,9 @@
 		4326B36D2515AE9800A87A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4326B36B2515AE9800A87A24 /* LaunchScreen.storyboard */; };
 		4326B3782515AE9900A87A24 /* AlleyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3772515AE9900A87A24 /* AlleyTests.swift */; };
 		4326B3832515AE9900A87A24 /* AlleyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3822515AE9900A87A24 /* AlleyUITests.swift */; };
+		4326B3972516A2AA00A87A24 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3962516A2AA00A87A24 /* DashViewController.swift */; };
+		4326B39E2516C09E00A87A24 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B39D2516C09E00A87A24 /* TagTableViewCell.swift */; };
+		4326B3A02516DB9D00A87A24 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B39F2516DB9D00A87A24 /* TagViewController.swift */; };
 		4C56A9DF39835EF51EEBCA73 /* Pods_Alley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8F4A56D0FE10A4587CF535 /* Pods_Alley.framework */; };
 		ECFD7715BA5310A0E7805759 /* Pods_Alley_AlleyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECC3B9336F8A95DC7B9C977 /* Pods_Alley_AlleyUITests.framework */; };
 		F7CCBC754B5CAC5328307873 /* Pods_AlleyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF101B77157D7197D6E42E6C /* Pods_AlleyTests.framework */; };
@@ -47,8 +48,6 @@
 		2FC03C392516614000A9E079 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2FC03C3B2516623E00A9E079 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2FC03C3D2516624700A9E079 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
-		2FC03C432516A16900A9E079 /* DashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
-		2FC03C452516A4A700A9E079 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4326B35F2515AE9500A87A24 /* Alley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4326B3622515AE9500A87A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4326B3642515AE9500A87A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +61,9 @@
 		4326B37E2515AE9900A87A24 /* AlleyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlleyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4326B3822515AE9900A87A24 /* AlleyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlleyUITests.swift; sourceTree = "<group>"; };
 		4326B3842515AE9900A87A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4326B3962516A2AA00A87A24 /* DashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
+		4326B39D2516C09E00A87A24 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		4326B39F2516DB9D00A87A24 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		4B8F4A56D0FE10A4587CF535 /* Pods_Alley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6B00F1B08891FE7D17EFF2 /* Pods-AlleyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlleyTests.debug.xcconfig"; path = "Target Support Files/Pods-AlleyTests/Pods-AlleyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72187AEBB235DB28139FB3BA /* Pods-Alley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alley.debug.xcconfig"; path = "Target Support Files/Pods-Alley/Pods-Alley.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				4326B3642515AE9500A87A24 /* ViewController.swift */,
-				2FC03C432516A16900A9E079 /* DashViewController.swift */,
+				4326B3962516A2AA00A87A24 /* DashViewController.swift */,
+				4326B39F2516DB9D00A87A24 /* TagViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 		4326B3612515AE9500A87A24 /* Alley */ = {
 			isa = PBXGroup;
 			children = (
+				4326B39C2516C07C00A87A24 /* Cells */,
 				4326B3622515AE9500A87A24 /* AppDelegate.swift */,
 				2FC03C4125168C4B00A9E079 /* Controllers */,
 				2FC03C38251660CB00A9E079 /* Models */,
@@ -160,7 +164,6 @@
 				4326B3692515AE9800A87A24 /* Assets.xcassets */,
 				4326B36B2515AE9800A87A24 /* LaunchScreen.storyboard */,
 				4326B36E2515AE9800A87A24 /* Info.plist */,
-				2FC03C452516A4A700A9E079 /* GoogleService-Info.plist */,
 			);
 			path = Alley;
 			sourceTree = "<group>";
@@ -181,6 +184,14 @@
 				4326B3842515AE9900A87A24 /* Info.plist */,
 			);
 			path = AlleyUITests;
+			sourceTree = "<group>";
+		};
+		4326B39C2516C07C00A87A24 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4326B39D2516C09E00A87A24 /* TagTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		6AE64F88B451F579AEC7AEC6 /* Pods */ = {
@@ -306,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4326B36D2515AE9800A87A24 /* LaunchScreen.storyboard in Resources */,
-				2FC03C462516A4A800A9E079 /* GoogleService-Info.plist in Resources */,
 				4326B36A2515AE9800A87A24 /* Assets.xcassets in Resources */,
 				4326B3682515AE9500A87A24 /* Main.storyboard in Resources */,
 			);
@@ -439,8 +449,10 @@
 				4326B3652515AE9500A87A24 /* ViewController.swift in Sources */,
 				4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */,
 				2FC03C3A2516614000A9E079 /* User.swift in Sources */,
+				4326B39E2516C09E00A87A24 /* TagTableViewCell.swift in Sources */,
 				2FC03C3E2516624700A9E079 /* Tip.swift in Sources */,
-				2FC03C442516A16900A9E079 /* DashViewController.swift in Sources */,
+				4326B3A02516DB9D00A87A24 /* TagViewController.swift in Sources */,
+				4326B3972516A2AA00A87A24 /* DashViewController.swift in Sources */,
 				2FC03C3C2516623E00A9E079 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

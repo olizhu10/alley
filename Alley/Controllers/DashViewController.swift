@@ -8,10 +8,19 @@
 
 import UIKit
 
-class DashViewController: UIViewController {
+class DashViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     var welcomeLabel: UILabel!
     var tipLabel: UILabel!
-    var label:String!
+    var featureLabel: UILabel!
+    var posts: [Post]!
+    var postTableView: UITableView!
+    var tags: [String]!
+    var tagTableView: UITableView!
+    let reuseIdentifier = "tagCellReuse"
+    var viewHeight: CGFloat!
+
 
     init() {
         
@@ -38,6 +47,27 @@ class DashViewController: UIViewController {
         tipLabel.textColor = .black
         tipLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
         view.addSubview(tipLabel)
+        
+        featureLabel = UILabel()
+        featureLabel.translatesAutoresizingMaskIntoConstraints = false
+        featureLabel.text = "featured tag"
+        featureLabel.textColor = .black
+        featureLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        view.addSubview(featureLabel)
+        
+        
+        tagTableView = UITableView(frame: .zero)
+        tagTableView.translatesAutoresizingMaskIntoConstraints = false
+        tagTableView.backgroundColor = .gray
+        tagTableView.dataSource = self
+        tagTableView.delegate = self
+        tagTableView.register(TagTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        view.addSubview(tagTableView)
+        
+        tags = ["#immigration", "#racism", "#gender inequality", "#community"]
+        viewHeight = view.frame.height
+        self.tagTableView.rowHeight = 44;
+        self.tagTableView.allowsSelection = true
 
         setupConstraints()
 
@@ -54,7 +84,49 @@ class DashViewController: UIViewController {
             tipLabel.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: 150),
             tipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
+        NSLayoutConstraint.activate([
+            featureLabel.bottomAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 150),
+            featureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+
+        NSLayoutConstraint.activate([
+            tagTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tagTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tagTableView.topAnchor.constraint(equalTo: featureLabel.bottomAnchor, constant: 150),
+            tagTableView.bottomAnchor.constraint(equalTo: tagTableView.topAnchor, constant: 200)
+            ])
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tags.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TagTableViewCell
+        let tag = tags[indexPath.row]
+//        print(tag)
+        cell.configure(for: tag)
+        cell.setNeedsUpdateConstraints()
+        cell.selectionStyle = .blue
+        cell.backgroundColor = .gray
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tag = tags[indexPath.row]
+        let tagVC = TagViewController()
+        print(tag)
+//        songVC.delegate = self
+        tagVC.tag = tag
+        navigationController?.pushViewController(tagVC, animated: true)
+        present(tagVC, animated: true, completion: nil)
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 50/895*viewHeight + 76/895*viewHeight
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
