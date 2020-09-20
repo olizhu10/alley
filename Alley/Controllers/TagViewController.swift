@@ -41,12 +41,7 @@ class TagViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         tagLabel.textColor = .black
         tagLabel.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
         view.addSubview(tagLabel)
-        
-        
-        
-        
-        
-        
+    
         backButton = UIButton()
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.setTitle("< home", for: .normal)

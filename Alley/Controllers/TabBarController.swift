@@ -9,13 +9,14 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    var discussionTag = Tag(label: "Discussions")
+//    var discussionTag = Tag(label: "Discussions")
     var posts = [Post]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTag()
-        getPosts()
+//        getTag()
+//        getPosts()
         view.backgroundColor = UIColor(hue: 258/360, saturation: 23/100, brightness: 92/100, alpha: 1.0) /* #c6b5ed */
 
         
@@ -53,22 +54,16 @@ class TabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
-    func getTag() {
-        Networking.shared.getTag(forTag: 1) { (tag) in
-            self.discussionTag = Tag(label: tag.label)
-//            DispatchQueue.main.async {
-//                self.discu.reloadData()
-//            }
-        }
-    }
-    func getPosts() {
-        Networking.shared.getPosts() { (posts) in
-            self.posts = Post.toPosts(posts:posts)
-//            DispatchQueue.main.async {
-//                self.discu.reloadData()
-//            }
-        }
-    }
+//    func getTag() {
+//        Networking.shared.getTag(forTag: 1) { (tag) in
+//            self.discussionTag = Tag(label: tag.label)
+////            DispatchQueue.main.async {
+////                self.discu.reloadData()
+////            }
+//        }
+//    }
+    
+
 
 
     /*

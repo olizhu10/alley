@@ -17,9 +17,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     var featureLabel: UILabel!
     var posts: [Post]!
     var postTableView: UITableView!
-//    var tags: [String]!
     var tags = [Tag]()
-
     var tagTableView: UITableView!
     let reuseIdentifier = "tagCellReuse"
     var viewHeight: CGFloat!
@@ -27,10 +25,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     let cellSpacingHeight: CGFloat = 15
     var exploreLabel: UILabel!
 
-
-
-
-
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -60,18 +55,18 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         listTipLabel = UILabel()
         listTipLabel.translatesAutoresizingMaskIntoConstraints = false
         listTipLabel.text =  """
-        Don't expect Black people to educate you. \
-        Use Google. @MarieBeech
+         Don't expect Black people to educate you. \
+         Use Google. \
+         - @MarieBeech
         """
-        listTipLabel.lineBreakMode = .byCharWrapping
+        listTipLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        listTipLabel.numberOfLines = 0                      //'0' means infinite number of lines
         listTipLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0) /* #3f414e */
-
-        listTipLabel.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0) /* #c4c4c4 */
-
+//        listTipLabel.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0) /* #c4c4c4 */
+        listTipLabel.backgroundColor = UIColor(hue: 312/360, saturation: 12/100, brightness: 95/100, alpha: 1.0) /* #f3d5ed */
         listTipLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
         listTipLabel.layer.cornerRadius = 12
         listTipLabel.layer.masksToBounds = true
-
         view.addSubview(listTipLabel)
         
         exploreLabel = UILabel()
@@ -80,7 +75,6 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         exploreLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0)
         exploreLabel.font = UIFont.systemFont(ofSize: 30, weight: .regular)
         view.addSubview(exploreLabel)
-        
         
         tagTableView = UITableView(frame: .zero)
         tagTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -98,11 +92,6 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
 //
 //        let immPosts = [pimm, prac]
 //        let racPosts = [pgen, pcom]
-
-
-
-        
-        
 //        let imm = Tag(label: "#immigration")
 //        let rac = Tag(label: "#racism")
 //        let gen = Tag(label: "#gender inequality")
@@ -120,37 +109,23 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        let rac = Tag(label: "#racism")
 //        rac.posts.append(pgen)
 //        rac.posts.append(pcom)
-//
-//        let gen = Tag(label: "#gender inequality")
-//        let com = Tag(label: "#community")
-//
-//
-//
-//        tags = [imm, rac, gen, com]
 
         viewHeight = view.frame.height
         self.tagTableView.rowHeight = 44;
         self.tagTableView.allowsSelection = true
-            
 
         getTags()
-//        Networking.shared.getTag(forTag: 1) { (tag) in
-//            print(tag.label)
-//        }
-//        Networking.shared.getPost(forPost: 1) { (post) in
-//            print(post.content)
-//        }
         setupConstraints()
-
-
 
         // Do any additional setup after loading the view.
     }
+    
     @objc func addStory (){
         let tagVC = TagViewController()
         //        songVC.delegate = self
         present(tagVC, animated: true, completion: nil)
     }
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
             welcomeLabel.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 150),
