@@ -60,14 +60,17 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         listTipLabel = UILabel()
         listTipLabel.translatesAutoresizingMaskIntoConstraints = false
         listTipLabel.text =  """
-        Don't expect Black people to educate you. \
-        Use Google. @MarieBeech
+         Don't expect Black people to educate you. \
+         Use Google. \
+         - @MarieBeech
         """
-        listTipLabel.lineBreakMode = .byCharWrapping
+        listTipLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        listTipLabel.numberOfLines = 0                      //'0' means infinite number of lines
+
         listTipLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0) /* #3f414e */
 
-        listTipLabel.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0) /* #c4c4c4 */
-
+//        listTipLabel.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0) /* #c4c4c4 */
+        listTipLabel.backgroundColor = UIColor(hue: 312/360, saturation: 12/100, brightness: 95/100, alpha: 1.0) /* #f3d5ed */
         listTipLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
         listTipLabel.layer.cornerRadius = 12
         listTipLabel.layer.masksToBounds = true

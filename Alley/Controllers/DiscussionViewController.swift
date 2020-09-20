@@ -27,15 +27,19 @@ class DiscussionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        print("Label: ", tag.label)
         
         titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = tag.label
         titleLabel.textColor = .black
-        titleLabel.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
+        titleLabel.font = UIFont.systemFont(ofSize: 35, weight: .semibold)
         view.addSubview(titleLabel)
         
-        tableView = UITableView(frame: CGRect(), style: .grouped)
+//        tableView = UITableView(frame: CGRect(), style: .grouped)
+        tableView = UITableView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
         tableView.backgroundColor = .none
         tableView.separatorStyle = .none
         tableView.dataSource = self
@@ -50,7 +54,8 @@ class DiscussionViewController: UIViewController {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         NSLayoutConstraint.activate([
@@ -64,9 +69,9 @@ class DiscussionViewController: UIViewController {
             ])
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-50),
-            tableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 50),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
+//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-50),
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 65),
+//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
     /*
@@ -88,7 +93,12 @@ extension DiscussionViewController: UITableViewDelegate {
     
 }
 
+
 extension DiscussionViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return tag.posts.count
+        
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! PostTableViewCell
@@ -98,7 +108,7 @@ extension DiscussionViewController: UITableViewDataSource {
         cell.layer.masksToBounds = true
 
         let post = tag.posts[indexPath.section]
-        print(post.content)
+        print("Posts :", post.content)
         cell.configure(for: post)
         
         cell.setNeedsUpdateConstraints()
@@ -109,6 +119,6 @@ extension DiscussionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tag.posts.count
+        return 1
     }
 }
