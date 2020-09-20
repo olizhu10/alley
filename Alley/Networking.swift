@@ -9,13 +9,14 @@
 import Foundation
 import Alamofire
 
-struct APIResponse<T: Codable>: Codable {
-    let success: Bool
-    let data: T
-}
+//struct APIResponse<T: Codable>: Codable {
+//    let success: Bool
+//    let data: T
+//}
 
 
 final class Networking {
+    static let shared = Networking()
     let baseURL = "http://34.75.55.26/"
     
     struct Post : Codable {
@@ -50,8 +51,8 @@ final class Networking {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let postData = try? jsonDecoder.decode(APIResponse<Post>.self, from: data) {
-                    completion(postData.data)
+                if let postData = try? jsonDecoder.decode(Post.self, from: data) {
+                    completion(postData)
                 }
                 
             case .failure(let error):
@@ -67,8 +68,8 @@ final class Networking {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let postData = try? jsonDecoder.decode(APIResponse<Posts>.self, from: data) {
-                    completion(postData.data.data)
+                if let postData = try? jsonDecoder.decode(Posts.self, from: data) {
+                    completion(postData.data)
                 }
                 
             case .failure(let error):
@@ -85,8 +86,8 @@ final class Networking {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let tagData = try? jsonDecoder.decode(APIResponse<Tag>.self, from: data) {
-                    completion(tagData.data)
+                if let tagData = try? jsonDecoder.decode(Tag.self, from: data) {
+                    completion(tagData)
                 }
                 
             case .failure(let error):
@@ -95,18 +96,26 @@ final class Networking {
         }
     }
     
-    func getTags(forPost postID: Int, _ completion: @escaping ([Tag]) -> Void) {
+    func getTags(_ completion: @escaping ([Tag]) -> Void) {
+        print("tags")
         let endpoint = baseURL+"tags/"
+        print(endpoint)
         Alamofire.request(endpoint, method: .get).validate().responseData { response in
+            print(response)
             switch response.result {
             case .success(let data):
+                print("in success")
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let tagData = try? jsonDecoder.decode(APIResponse<Tags>.self, from: data) {
-                    completion(tagData.data.data)
+                print("before decoding")
+                if let tagData = try? jsonDecoder.decode(Tags.self, from: data) {
+                    print("before completion")
+                    completion(tagData.data)
+                    print("after completion")
                 }
-                
+                print("done")
             case .failure(let error):
+                print("failure")
                 print(error.localizedDescription)
             }
         }

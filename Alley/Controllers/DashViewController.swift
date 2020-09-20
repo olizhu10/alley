@@ -17,7 +17,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     var posts: [Post]!
     var postTableView: UITableView!
 //    var tags: [String]!
-    var tags: [Tag]!
+    var tags = [Tag]()
 
     var tagTableView: UITableView!
     let reuseIdentifier = "tagCellReuse"
@@ -25,7 +25,6 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
     init() {
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,6 +34,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
         welcomeLabel = UILabel()
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,16 +67,20 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(tagTableView)
         
 
-        let imm = Tag(label:"#immigration")
-        let rac = Tag(label: "#racism")
-        let gen = Tag(label: "#gender inequality")
-        let com = Tag(label: "#community")
-        
-        tags = [imm, rac, gen, com]
+//        let imm = Tag(label: "#immigration")
+//        let rac = Tag(label: "#racism")
+//        let gen = Tag(label: "#gender inequality")
+//        let com = Tag(label: "#community")
+//
+//        tags = [imm, rac, gen, com]
+//        tags = []
+
+//        print(self.tags)
         viewHeight = view.frame.height
         self.tagTableView.rowHeight = 44;
         self.tagTableView.allowsSelection = true
-
+        
+        getTags()
         setupConstraints()
 
 
@@ -103,6 +107,16 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
             tagTableView.topAnchor.constraint(equalTo: featureLabel.bottomAnchor, constant: 150),
             tagTableView.bottomAnchor.constraint(equalTo: tagTableView.topAnchor, constant: 200)
             ])
+    }
+    
+    func getTags() {
+        Networking.shared.getTags() { (tags) in
+            print("hereeeeee")
+            self.tags = Tag.toTags(tags: tags)
+            DispatchQueue.main.async {
+                self.tagTableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,6 +154,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
 
+    
     /*
     // MARK: - Navigation
 

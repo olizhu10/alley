@@ -17,4 +17,17 @@ class Tag {
         self.label = label
         self.posts = []
     }
+    
+    static func toTags(tags: [Networking.Tag]?) -> [Tag] {
+        if tags == nil {
+            return []
+        }
+        var res : [Tag] = []
+        for tag in tags! {
+            res.append(Tag(label:tag.label))
+        }
+        print("totags")
+        print(res)
+        return res
+    }
 }
