@@ -19,7 +19,6 @@ final class Networking {
     let baseURL = "http://34.75.55.26/"
     
     struct Post : Codable {
-        
         let id: Int
         let content: String
         
@@ -33,6 +32,17 @@ final class Networking {
         var data: [Post]
     }
     
+    struct Tag: Codable {
+        let id: Int
+        let label: String
+        let posts: [Post]
+    }
+    
+    struct Tags: Codable {
+        var data: [Tag]
+    }
+    
+    // POSTS
     func getPost(forPost postID: Int, _ completion: @escaping (Post) -> Void) {
         let endpoint = baseURL+"posts/\(postID)/"
         Alamofire.request(endpoint, method: .get).validate().responseData { response in
@@ -66,6 +76,43 @@ final class Networking {
             }
         }
     }
+    
+    // TAGS
+    func getTag(forTag tagID: Int, _ completion: @escaping (Tag) -> Void) {
+        let endpoint = baseURL+"tags/\(tagID)/"
+        Alamofire.request(endpoint, method: .get).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let tagData = try? jsonDecoder.decode(APIResponse<Tag>.self, from: data) {
+                    completion(tagData.data)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getTags(forPost postID: Int, _ completion: @escaping ([Tag]) -> Void) {
+        let endpoint = baseURL+"tags/"
+        Alamofire.request(endpoint, method: .get).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let tagData = try? jsonDecoder.decode(APIResponse<Tags>.self, from: data) {
+                    completion(tagData.data.data)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
     
     
     
