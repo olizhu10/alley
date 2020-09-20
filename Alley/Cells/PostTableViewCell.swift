@@ -18,7 +18,8 @@ class PostTableViewCell: UITableViewCell {
         nameLabel = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = UIFont.systemFont(ofSize: 14)
-        
+        nameLabel.numberOfLines = 0
+        nameLabel.lineBreakMode = .byWordWrapping
         
         contentView.addSubview(nameLabel)
     }
@@ -31,11 +32,14 @@ class PostTableViewCell: UITableViewCell {
         nameLabel.text = post.content
         nameLabel.textColor = .white
         nameLabel.font = .systemFont(ofSize: 15, weight: .bold)
+        nameLabel.adjustsFontForContentSizeCategory = true
+
     }
     
     override func updateConstraints() {
         NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 75),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             nameLabel.heightAnchor.constraint(equalToConstant: 20)
             ])

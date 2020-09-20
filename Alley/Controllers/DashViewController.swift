@@ -66,11 +66,28 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         tagTableView.register(TagTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tagTableView)
         
+        
+        let pimm = Post(content:"Immigration is crazy I am an immigrant adkfjlkadjlfkjkdlafjlkdsjfkljadsklfjakdlsfjkladsjfkld jskalfjkldjfkl", user_id: 1, tag_id: 1)
+        let prac = Post(content: "racism is bad dont be racist", user_id: 1, tag_id: 1)
+        let pgen = Post(content: "women should be equal i am a woman", user_id: 1, tag_id: 1)
+        let pcom = Post(content: "we should be in a supportive community", user_id: 1, tag_id: 1)
+        
+//        let immPosts = [pimm, prac]
+//        let racPosts = [pgen, pcom]
+
 
         let imm = Tag(label:"#immigration")
+        imm.posts.append(pimm)
+        imm.posts.append(prac)
+        imm.posts.append(pimm)
         let rac = Tag(label: "#racism")
+        rac.posts.append(pgen)
+        rac.posts.append(pcom)
+
         let gen = Tag(label: "#gender inequality")
         let com = Tag(label: "#community")
+        
+        
         
         tags = [imm, rac, gen, com]
         viewHeight = view.frame.height
@@ -98,8 +115,8 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
             ])
 
         NSLayoutConstraint.activate([
-            tagTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tagTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tagTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            tagTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-50),
             tagTableView.topAnchor.constraint(equalTo: featureLabel.bottomAnchor, constant: 150),
             tagTableView.bottomAnchor.constraint(equalTo: tagTableView.topAnchor, constant: 200)
             ])
@@ -113,7 +130,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TagTableViewCell
         let tag = tags[indexPath.row]
 //        print(tag)
-        cell.configure(for: tag.label)
+        cell.configure(for: tag)
         cell.setNeedsUpdateConstraints()
         cell.selectionStyle = .blue
         cell.backgroundColor = .gray
