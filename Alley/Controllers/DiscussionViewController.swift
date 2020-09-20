@@ -13,10 +13,10 @@ class DiscussionViewController: UIViewController {
     var tableView: UITableView!
     var titleLabel: UILabel!
     var reuseIdentifier = "reuseIdentifier"
-    var tag: Tag!
+    var posts: [Post]!
     
-    init(tag: Tag) {
-        self.tag = tag
+    init(posts: [Post]) {
+        self.posts = posts
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,7 +30,7 @@ class DiscussionViewController: UIViewController {
         
         titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = tag.label
+        titleLabel.text = "discussions"
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
         view.addSubview(titleLabel)
@@ -97,7 +97,7 @@ extension DiscussionViewController: UITableViewDataSource {
         cell.layer.cornerRadius = 15
         cell.layer.masksToBounds = true
 
-        let post = tag.posts[indexPath.section]
+        let post = posts[indexPath.section]
         print(post.content)
         cell.configure(for: post)
         
@@ -109,6 +109,6 @@ extension DiscussionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tag.posts.count
+        return posts.count
     }
 }

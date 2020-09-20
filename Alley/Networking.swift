@@ -76,7 +76,7 @@ final class Networking {
         }
     }
     
-    func getPosts(forPost postID: Int, _ completion: @escaping ([Post]) -> Void) {
+    func getPosts(_ completion: @escaping ([Post]) -> Void) {
         let endpoint = baseURL+"posts/"
         Alamofire.request(endpoint, method: .get).validate().responseData { response in
             switch response.result {

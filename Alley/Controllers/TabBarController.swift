@@ -10,10 +10,12 @@ import UIKit
 
 class TabBarController: UITabBarController {
     var discussionTag = Tag(label: "Discussions")
+    var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getTag()
+        getPosts()
         view.backgroundColor = UIColor(hue: 258/360, saturation: 23/100, brightness: 92/100, alpha: 1.0) /* #c6b5ed */
 
         
@@ -22,7 +24,7 @@ class TabBarController: UITabBarController {
 //        homeViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         
         let dashViewController = DashViewController()
-        let discViewController = DiscussionViewController(tag:discussionTag)
+        let discViewController = DiscussionViewController(posts:posts)
         let addViewController = AddStoryViewController()
 
 
@@ -59,7 +61,15 @@ class TabBarController: UITabBarController {
 //            }
         }
     }
-    
+    func getPosts() {
+        Networking.shared.getPosts() { (posts) in
+            self.posts = Post.toPosts(posts:posts)
+//            DispatchQueue.main.async {
+//                self.discu.reloadData()
+//            }
+        }
+    }
+
 
     /*
     // MARK: - Navigation
