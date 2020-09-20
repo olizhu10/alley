@@ -23,6 +23,9 @@
 		4326B39E2516C09E00A87A24 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B39D2516C09E00A87A24 /* TagTableViewCell.swift */; };
 		4326B3A02516DB9D00A87A24 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B39F2516DB9D00A87A24 /* TagViewController.swift */; };
 		4326B3A22516FAB700A87A24 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3A12516FAB700A87A24 /* PostTableViewCell.swift */; };
+		4326B3A62517266500A87A24 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3A52517266500A87A24 /* TabBarController.swift */; };
+		4326B3AA251742D900A87A24 /* DiscussionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3A9251742D900A87A24 /* DiscussionViewController.swift */; };
+		4326B3AC251742F400A87A24 /* AddStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3AB251742F400A87A24 /* AddStoryViewController.swift */; };
 		4C56A9DF39835EF51EEBCA73 /* Pods_Alley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8F4A56D0FE10A4587CF535 /* Pods_Alley.framework */; };
 		ECFD7715BA5310A0E7805759 /* Pods_Alley_AlleyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECC3B9336F8A95DC7B9C977 /* Pods_Alley_AlleyUITests.framework */; };
 		F7CCBC754B5CAC5328307873 /* Pods_AlleyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF101B77157D7197D6E42E6C /* Pods_AlleyTests.framework */; };
@@ -70,6 +73,9 @@
 		4326B39D2516C09E00A87A24 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		4326B39F2516DB9D00A87A24 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		4326B3A12516FAB700A87A24 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		4326B3A52517266500A87A24 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4326B3A9251742D900A87A24 /* DiscussionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionViewController.swift; sourceTree = "<group>"; };
+		4326B3AB251742F400A87A24 /* AddStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryViewController.swift; sourceTree = "<group>"; };
 		4B8F4A56D0FE10A4587CF535 /* Pods_Alley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6B00F1B08891FE7D17EFF2 /* Pods-AlleyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlleyTests.debug.xcconfig"; path = "Target Support Files/Pods-AlleyTests/Pods-AlleyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72187AEBB235DB28139FB3BA /* Pods-Alley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alley.debug.xcconfig"; path = "Target Support Files/Pods-Alley/Pods-Alley.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,9 +137,12 @@
 		2FC03C4125168C4B00A9E079 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4326B3A52517266500A87A24 /* TabBarController.swift */,
 				4326B3642515AE9500A87A24 /* ViewController.swift */,
 				4326B3962516A2AA00A87A24 /* DashViewController.swift */,
 				4326B39F2516DB9D00A87A24 /* TagViewController.swift */,
+				4326B3A9251742D900A87A24 /* DiscussionViewController.swift */,
+				4326B3AB251742F400A87A24 /* AddStoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -455,8 +464,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4326B3AC251742F400A87A24 /* AddStoryViewController.swift in Sources */,
 				4326B3A22516FAB700A87A24 /* PostTableViewCell.swift in Sources */,
 				4326B3652515AE9500A87A24 /* ViewController.swift in Sources */,
+				4326B3AA251742D900A87A24 /* DiscussionViewController.swift in Sources */,
 				4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */,
 				2FC03C3A2516614000A9E079 /* User.swift in Sources */,
 				4326B39E2516C09E00A87A24 /* TagTableViewCell.swift in Sources */,
@@ -464,6 +475,7 @@
 				2FC03C482516C21100A9E079 /* Tag.swift in Sources */,
 				2FC03C3E2516624700A9E079 /* Tip.swift in Sources */,
 				4326B3A02516DB9D00A87A24 /* TagViewController.swift in Sources */,
+				4326B3A62517266500A87A24 /* TabBarController.swift in Sources */,
 				4326B3972516A2AA00A87A24 /* DashViewController.swift in Sources */,
 				2FC03C3C2516623E00A9E079 /* Post.swift in Sources */,
 			);

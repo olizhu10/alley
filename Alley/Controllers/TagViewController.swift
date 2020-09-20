@@ -133,7 +133,8 @@ class TagViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.configure(for: post)
         cell.setNeedsUpdateConstraints()
         cell.selectionStyle = .blue
-        cell.backgroundColor = .gray
+        cell.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 83/100, alpha: 1.0) /* #d5d5d5 */
+
         
         return cell
     }

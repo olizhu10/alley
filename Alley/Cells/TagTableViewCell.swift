@@ -29,14 +29,15 @@ class TagTableViewCell: UITableViewCell {
     
     func configure(for tag: Tag){
         nameLabel.text = tag.label
-        nameLabel.textColor = .white
+        nameLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0)
         nameLabel.font = .systemFont(ofSize: 15, weight: .bold)
     }
     
     override func updateConstraints() {
         NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 75),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+//            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 20)
             ])
         super.updateConstraints()

@@ -15,12 +15,14 @@ class ViewController: UIViewController {
     var titleLabel: UILabel!
     var subLabel: UILabel!
     var continueButton: UIButton!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
+//        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Splash Screen - Caption.png")!)
         titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "alley"
@@ -46,22 +48,22 @@ class ViewController: UIViewController {
     }
     
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 400),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
-        NSLayoutConstraint.activate([
-            subLabel.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75),
-            //            subLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -15),
-            //            subLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 30),
-            subLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
-        NSLayoutConstraint.activate([
-            continueButton.bottomAnchor.constraint(equalTo: subLabel.bottomAnchor, constant: 75),
-            //            subLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -15),
-            //            subLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 30),
-            continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
+//        NSLayoutConstraint.activate([
+//            titleLabel.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 400),
+//            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//            ])
+//        NSLayoutConstraint.activate([
+//            subLabel.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75),
+//            //            subLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -15),
+//            //            subLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 30),
+//            subLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//            ])
+//        NSLayoutConstraint.activate([
+//            continueButton.bottomAnchor.constraint(equalTo: subLabel.bottomAnchor, constant: 75),
+//            //            subLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -15),
+//            //            subLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 30),
+//            continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//            ])
     }
     
     @objc func presentDashViewController() {
@@ -69,8 +71,17 @@ class ViewController: UIViewController {
 //        dashViewController.delegate = self
 //        self.navigationController?.pushViewController(dashViewController, animated: true)
         present(dashViewController, animated: true, completion: nil)
+//        appDelegate.window?.rootViewController = UINavigationController(rootViewController: TabBarController())
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        appDelegate.setCheckPageFalse()
+        
+//        if(!appDelegate.hasAlreadyLaunched){
+//            appDelegate.sethasAlreadyLaunched()
+//
+//        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

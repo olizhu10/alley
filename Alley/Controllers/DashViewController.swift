@@ -13,6 +13,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var welcomeLabel: UILabel!
     var tipLabel: UILabel!
+    var listTipLabel: UILabel!
     var featureLabel: UILabel!
     var posts: [Post]!
     var postTableView: UITableView!
@@ -22,6 +23,12 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tagTableView: UITableView!
     let reuseIdentifier = "tagCellReuse"
     var viewHeight: CGFloat!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let cellSpacingHeight: CGFloat = 15
+    var exploreLabel: UILabel!
+
+
+
 
 
     init() {
@@ -35,7 +42,8 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
+//        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
+        view.backgroundColor = .white
         welcomeLabel = UILabel()
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         welcomeLabel.text = "welcome to alley!"
@@ -46,21 +54,31 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         tipLabel = UILabel()
         tipLabel.translatesAutoresizingMaskIntoConstraints = false
         tipLabel.text = "daily tip"
-        tipLabel.textColor = .black
-        tipLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        tipLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0) /* #3f414e */
+        tipLabel.font = UIFont.systemFont(ofSize: 30, weight: .regular)
         view.addSubview(tipLabel)
         
-        featureLabel = UILabel()
-        featureLabel.translatesAutoresizingMaskIntoConstraints = false
-        featureLabel.text = "featured tag"
-        featureLabel.textColor = .black
-        featureLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        view.addSubview(featureLabel)
+        listTipLabel = UILabel()
+        listTipLabel.translatesAutoresizingMaskIntoConstraints = false
+        listTipLabel.text = "Don’t expect Black people to educate you. Use Google. @MarieBeech"
+        listTipLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0) /* #3f414e */
+
+//        listTipLabel.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0) /* #c4c4c4 */
+
+        listTipLabel.font = UIFont.systemFont(ofSize: 30, weight: .light)
+        view.addSubview(listTipLabel)
+        
+        exploreLabel = UILabel()
+        exploreLabel.translatesAutoresizingMaskIntoConstraints = false
+        exploreLabel.text = "explore tags"
+        exploreLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0)
+        exploreLabel.font = UIFont.systemFont(ofSize: 30, weight: .regular)
+        view.addSubview(exploreLabel)
         
         
         tagTableView = UITableView(frame: .zero)
         tagTableView.translatesAutoresizingMaskIntoConstraints = false
-        tagTableView.backgroundColor = .gray
+        tagTableView.backgroundColor = .white
         tagTableView.dataSource = self
         tagTableView.delegate = self
         tagTableView.register(TagTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
@@ -84,21 +102,32 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         rac.posts.append(pgen)
         rac.posts.append(pcom)
 
-        let gen = Tag(label: "#gender inequality")
-        let com = Tag(label: "#community")
+        let gen = Tag(label: "#lgbtqia")
+        let com = Tag(label: "#BLM")
+//        let soc = Tag(label: "#socialjustice")
+        let tra = Tag(label: "#transphobia")
+
         
         
         
-        tags = [imm, rac, gen, com]
+        tags = [imm, rac, gen, com, tra]
         viewHeight = view.frame.height
         self.tagTableView.rowHeight = 44;
         self.tagTableView.allowsSelection = true
+        
+        
+
 
         setupConstraints()
 
 
 
         // Do any additional setup after loading the view.
+    }
+    @objc func addStory (){
+        let tagVC = TagViewController()
+        //        songVC.delegate = self
+        present(tagVC, animated: true, completion: nil)
     }
     func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -107,37 +136,76 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
             ])
         NSLayoutConstraint.activate([
             tipLabel.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: 150),
+            tipLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             tipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
         NSLayoutConstraint.activate([
-            featureLabel.bottomAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 150),
-            featureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            listTipLabel.bottomAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 150),
+            listTipLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+//            listTipLabel.heightAnchor.constraint(equalToConstant: 30),
+            listTipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
+        NSLayoutConstraint.activate([
+            exploreLabel.bottomAnchor.constraint(equalTo: listTipLabel.topAnchor, constant: 150),
+            exploreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            exploreLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+//        NSLayoutConstraint.activate([
+//            featureLabel.bottomAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 150),
+//            featureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//            ])
 
         NSLayoutConstraint.activate([
             tagTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            tagTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-50),
-            tagTableView.topAnchor.constraint(equalTo: featureLabel.bottomAnchor, constant: 150),
-            tagTableView.bottomAnchor.constraint(equalTo: tagTableView.topAnchor, constant: 200)
+            tagTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-120),
+            tagTableView.topAnchor.constraint(equalTo: exploreLabel.bottomAnchor, constant: 20),
+            tagTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return tags.count
+//    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return tags.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //        print(posts.count)
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TagTableViewCell
-        let tag = tags[indexPath.row]
+        cell.layer.borderWidth = 2.0
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.cornerRadius = 15
+        cell.layer.masksToBounds = true
+
+        let tag = tags[indexPath.section]
 //        print(tag)
         cell.configure(for: tag)
         cell.setNeedsUpdateConstraints()
         cell.selectionStyle = .blue
-        cell.backgroundColor = .gray
+        cell.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 83/100, alpha: 1.0) /* #d5d5d5 */
+
+        
         
         return cell
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        appDelegate.setCheckPageTrue()
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tag = tags[indexPath.row]
@@ -145,7 +213,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(tag)
 //        songVC.delegate = self
         tagVC.tag = tag
-        navigationController?.pushViewController(tagVC, animated: true)
+//        navigationController?.pushViewController(tagVC, animated: true)
         present(tagVC, animated: true, completion: nil)
     }
     

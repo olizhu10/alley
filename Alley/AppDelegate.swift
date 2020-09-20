@@ -13,6 +13,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var hasAlreadyLaunched :Bool!
+    var checkPage :Bool!
+
+
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -24,13 +28,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // and use multiple ViewControllers across our app.
         // The navigation controller must start off with a beginning view controller, or the root.
         // We want the root view controller to display our ViewController.
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+//        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        UITabBar.appearance().barTintColor = UIColor(hue: 258/360, saturation: 23/100, brightness: 92/100, alpha: 1.0)
+//        window?.rootViewController = UINavigationController(rootViewController: TabBarController())
+        hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
+        checkPage = false
+        
+        
+//        print(hasAlreadyLaunched)
+        print(checkPage)
+
+//        if (hasAlreadyLaunched){
+//            hasAlreadyLaunched = true
+//            window?.rootViewController = UINavigationController(rootViewController: TabBarController())
+//        }else{
+//            UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+//            window?.rootViewController = UINavigationController(rootViewController: ViewController())
+//
+//        }
+        if (checkPage){
+            hasAlreadyLaunched = true
+            checkPage = true
+            print("went in here")
+            window?.rootViewController = UINavigationController(rootViewController: TabBarController())
+        }else{
+            UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+            print("went in here false")
+            checkPage = false
+//            window?.rootViewController = UINavigationController(rootViewController: ViewController())
+            window?.rootViewController = UINavigationController(rootViewController: TabBarController())
+
+            
+        }
+
+        
+
         
         window?.makeKeyAndVisible()
         
 //        FirebaseApp.configure()
         return true
     }
+    func sethasAlreadyLaunched(){
+        hasAlreadyLaunched = true
+    }
+    func changeRootController(animated: Bool = true){
+        window?.rootViewController = UINavigationController(rootViewController: TabBarController())
+    }
+    
+    func setCheckPageFalse(){
+        checkPage = false
+    }
+    
+    func setCheckPageTrue(){
+        checkPage = true
+    }
+
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
