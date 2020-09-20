@@ -10,6 +10,7 @@ target 'Alley' do
   # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Alamofire'
 
   target 'AlleyTests' do
     inherit! :search_paths
