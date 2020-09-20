@@ -13,8 +13,8 @@ class Tag {
     var id: Int?
     var posts: [Post]
     
-    init(name:String) {
-        self.label = name
+    init(label:String) {
+        self.label = label
         self.posts = []
     }
 }

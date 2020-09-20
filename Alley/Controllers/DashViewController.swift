@@ -66,10 +66,10 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         tagTableView.register(TagTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tagTableView)
         
-        let imm = Tag(name:"#immigration")
-        let rac = Tag(name: "#racism")
-        let gen = Tag(name: "#gender inequality")
-        let com = Tag(name: "#community")
+        let imm = Tag(label:"#immigration")
+        let rac = Tag(label: "#racism")
+        let gen = Tag(label: "#gender inequality")
+        let com = Tag(label: "#community")
         
         tags = [imm, rac, gen, com]
         viewHeight = view.frame.height
