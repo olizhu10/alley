@@ -66,6 +66,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         tagTableView.register(TagTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tagTableView)
         
+
         let imm = Tag(label:"#immigration")
         let rac = Tag(label: "#racism")
         let gen = Tag(label: "#gender inequality")
