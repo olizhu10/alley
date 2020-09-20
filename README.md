@@ -8,15 +8,39 @@ View designs here: https://www.figma.com/file/kGeijTQfgIA0VXSyFASxt9/IT-1?node-i
 
 ## Features
 
-### Daily Tip
+### daily tip
 A daily notification with a simple suggestion of an action you can do today to be a better ally.
 
-### Discussion Board
+### discussion boards
 A safe space where people can discuss better ways to be an ally. Follow and contribute to different tabs to learn how to better support different groups.
 
-### Tech Stack
-#### Frontend: 
+### our stories
+A place for people to share and give others insight into their personal experiences.
+
+## User Flow
+1. Splash Screen
+
+![Splash Screen](screens/splash-screen.png)
+
+2. Home Dashboard
+
+![Dashboard Screen](screens/dash.png)
+
+3. Explore a Tag
+
+![Explore a tag](screens/explore-tag.png)
+
+4. Discussion Boards
+
+![Discussion Boards](screens/discussions.png)
+
+5. Write a Post
+
+![Write a Post](screens/write-post.png)
+
+## Tech Stack
+### Frontend: 
 Swift, XCode
 
-#### Backend:
+### Backend:
 Python, Postman, Google Cloud, Docker, Flask, SQLAlchemy
