@@ -16,6 +16,8 @@ class TagViewController: UIViewController {
     var tag: Tag!
     var tagLabel: UILabel!
     var backButton: UIButton!
+    var posts: [Post]!
+    var storyPosts: [Post]!
 
 //    var songTextField: UITextField!
 //    var singerTextField: UITextField!
@@ -38,6 +40,11 @@ class TagViewController: UIViewController {
         backButton.setTitleColor(.blue, for: .normal)
         backButton.addTarget(self, action: #selector(dismissDashViewController), for: .touchUpInside)
         view.addSubview(backButton)
+        
+        posts = tag.posts
+        
+
+        
 
         setupConstraints()
         
