@@ -11,7 +11,9 @@ import UIKit
 class TagViewController: UIViewController {
     
     
-    var tag: String!
+//    var tag: String!
+//    var tagLabel: UILabel!
+    var tag: Tag!
     var tagLabel: UILabel!
     var backButton: UIButton!
 
@@ -26,7 +28,7 @@ class TagViewController: UIViewController {
         view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
         tagLabel = UILabel()
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
-        tagLabel.text = tag
+        tagLabel.text = tag.label
         tagLabel.textColor = .black
         tagLabel.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
         view.addSubview(tagLabel)

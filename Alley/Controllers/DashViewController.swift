@@ -16,7 +16,9 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     var featureLabel: UILabel!
     var posts: [Post]!
     var postTableView: UITableView!
-    var tags: [String]!
+//    var tags: [String]!
+    var tags: [Tag]!
+
     var tagTableView: UITableView!
     let reuseIdentifier = "tagCellReuse"
     var viewHeight: CGFloat!
@@ -64,7 +66,12 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         tagTableView.register(TagTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tagTableView)
         
-        tags = ["#immigration", "#racism", "#gender inequality", "#community"]
+        let imm = Tag(name:"#immigration")
+        let rac = Tag(name: "#racism")
+        let gen = Tag(name: "#gender inequality")
+        let com = Tag(name: "#community")
+        
+        tags = [imm, rac, gen, com]
         viewHeight = view.frame.height
         self.tagTableView.rowHeight = 44;
         self.tagTableView.allowsSelection = true
@@ -105,7 +112,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TagTableViewCell
         let tag = tags[indexPath.row]
 //        print(tag)
-        cell.configure(for: tag)
+        cell.configure(for: tag.label)
         cell.setNeedsUpdateConstraints()
         cell.selectionStyle = .blue
         cell.backgroundColor = .gray
