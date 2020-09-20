@@ -14,4 +14,9 @@ A daily notification with a simple suggestion of an action you can do today to b
 ### Discussion Board
 A safe space where people can discuss better ways to be an ally. Follow and contribute to different tabs to learn how to better support different groups.
 
+### Tech Stack
+#### Frontend: 
+Swift, XCode
 
+#### Backend:
+Python, Postman, Google Cloud, Docker, Flask
