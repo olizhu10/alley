@@ -1,6 +1,6 @@
 import json
 from flask import Flask, request
-from db import db, User, Post, Tip
+from db import db, User, Post, Tip, Tag
 import dao
 
 
@@ -37,7 +37,13 @@ def hello_world():
 
 @app.route("/users/")
 def get_users():
-    return success_response(dao.get_all_users())
+    try:
+        return success_response(dao.get_all_users())
+    except Exception as e:
+        return json.dumps({
+            'success': False,
+            'error': 'Exception: ' + str(e)
+        }), 400
 
 
 @app.route("/users/<int:user_id>/")
@@ -93,6 +99,48 @@ def create_post():
         user_id=body.get('user_id')
     )
     return success_response(post, 201)
+
+
+# ----TAG ROUTES----
+
+@app.route("/tags/")
+def get_tags():
+    try:
+        return success_response(dao.get_all_tags())
+    except Exception as e:
+        return json.dumps({
+            'success': False,
+            'error': 'Exception: ' + str(e)
+        }), 400
+
+
+@app.route("/tags/<int:tag_id>/")
+def get_tag(tag_id):
+    try:
+        tag = dao.get_tag_by_id(tag_id)
+        if tag is None:
+            return failure_response("Tag not found!")
+        return success_response(tag)
+    except Exception as e:
+        return json.dumps({
+            'success': False,
+            'error': 'Exception: ' + str(e)
+        }), 400
+
+
+@app.route("/tags/", methods=["POST"])
+def create_tag():
+    try:
+        body = json.loads(request.data)
+        tag = dao.create_tag(
+            label=body.get('label')
+        )
+        return success_response(tag, 201)
+    except Exception as e:
+        return json.dumps({
+            'success': False,
+            'error': 'Exception: ' + str(e)
+        }), 400
 
 
 if __name__ == "__main__":

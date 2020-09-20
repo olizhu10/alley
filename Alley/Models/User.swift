@@ -11,8 +11,11 @@ import Foundation
 class User {
     var name: String
     var id: Int?
+    var posts: [Post]
     
     init(name:String) {
         self.name = name
+        self.posts = []
+        
     }
 }

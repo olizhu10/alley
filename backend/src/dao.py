@@ -1,4 +1,4 @@
-from db import db, User, Post, Tip
+from db import db, User, Post, Tip, Tag
 
 # ----USERS----------------------------------------------------------------------
 
@@ -36,13 +36,12 @@ def update_user_by_id(user_id, name):
 
 
 def delete_user_by_id(user_id):
-    def get_user_by_id(user_id):
-        user = User.query.filter_by(id=user_ud).first()
-        if user is None:
-            return None
-        db.session.delete(user)
-        db.session.commit()
-        return user.serialize()
+    user = User.query.filter_by(id=user_id).first()
+    if user is None:
+        return None
+    db.session.delete(user)
+    db.session.commit()
+    return user.serialize()
 
 # ----POSTS----------------------------------------------------------------------
 
@@ -109,3 +108,46 @@ def delete_tip_by_id(tip_id):
     db.session.delete(tip)
     db.session.commit()
     return tip.serialize()
+
+# ----TAGS----------------------------------------------------------------------
+
+
+def get_all_tags():
+    return [t.serialize() for t in Tag.query.all()]
+
+
+def create_tag(label):
+    new_tag = Tag(
+        label=label
+    )
+
+    db.session.add(new_tag)
+    db.session.commit()
+    return new_tag.serialize()
+
+
+def get_tag_by_id(tag_id):
+    tag = Tag.query.filter_by(id=tag_id).first()
+    if tag is None:
+        return None
+    return tag.serialize()
+
+
+def update_tag_by_id(tag_id, label):
+    tag = Tag.query.filter_by(id=tag_ud).first()
+    if tag is None:
+        return None
+    if label is not None:
+        tag.label = label
+
+    db.session.commit()
+    return tag.serialize()
+
+
+def delete_tag_by_id(tag_id):
+    tag = Tag.query.filter_by(id=tag_id).first()
+    if tag is None:
+        return None
+    db.session.delete(tag)
+    db.session.commit()
+    return tag.serialize()
