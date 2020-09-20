@@ -42,7 +42,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
-        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
+        view.backgroundColor = .white
         welcomeLabel = UILabel()
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         welcomeLabel.text = "welcome to alley!"
@@ -227,9 +227,9 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
-    override func viewDidAppear(_ animated: Bool) {
-        appDelegate.setCheckPageTrue()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        appDelegate.setCheckPageTrue()
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tag = tags[indexPath.row]

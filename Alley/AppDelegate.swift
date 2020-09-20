@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             checkPage = true
             print("went in here")
             window?.rootViewController = UINavigationController(rootViewController: TabBarController())
-        }else{
+        } else{
             UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
             print("went in here false")
             checkPage = false
@@ -76,13 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: TabBarController())
     }
     
-    func setCheckPageFalse(){
-        checkPage = false
-    }
-    
-    func setCheckPageTrue(){
-        checkPage = true
-    }
+//    func setCheckPageFalse(){
+//        checkPage = false
+//    }
+//    
+//    func setCheckPageTrue(){
+//        checkPage = true
+//    }
 
 
 
