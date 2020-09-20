@@ -47,7 +47,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         welcomeLabel.text = "welcome to alley!"
         welcomeLabel.textColor = .black
-        welcomeLabel.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
+        welcomeLabel.font = UIFont.systemFont(ofSize: 35, weight: .semibold)
         view.addSubview(welcomeLabel)
         
         tipLabel = UILabel()
@@ -59,12 +59,19 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         listTipLabel = UILabel()
         listTipLabel.translatesAutoresizingMaskIntoConstraints = false
-        listTipLabel.text = "Don’t expect Black people to educate you. Use Google. @MarieBeech"
+        listTipLabel.text =  """
+        Don't expect Black people to educate you. \
+        Use Google. @MarieBeech
+        """
+        listTipLabel.lineBreakMode = .byCharWrapping
         listTipLabel.textColor = UIColor(hue: 232/360, saturation: 19/100, brightness: 30/100, alpha: 1.0) /* #3f414e */
 
-//        listTipLabel.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0) /* #c4c4c4 */
+        listTipLabel.backgroundColor = UIColor(hue: 0/360, saturation: 0/100, brightness: 76/100, alpha: 1.0) /* #c4c4c4 */
 
-        listTipLabel.font = UIFont.systemFont(ofSize: 30, weight: .light)
+        listTipLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        listTipLabel.layer.cornerRadius = 12
+        listTipLabel.layer.masksToBounds = true
+
         view.addSubview(listTipLabel)
         
         exploreLabel = UILabel()
@@ -147,22 +154,23 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     func setupConstraints() {
         NSLayoutConstraint.activate([
             welcomeLabel.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
         NSLayoutConstraint.activate([
-            tipLabel.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: 150),
-            tipLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            tipLabel.bottomAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: 105),
+            tipLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             tipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
         NSLayoutConstraint.activate([
             listTipLabel.bottomAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 150),
-            listTipLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-//            listTipLabel.heightAnchor.constraint(equalToConstant: 30),
+            listTipLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            listTipLabel.heightAnchor.constraint(equalToConstant: 100),
             listTipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
         NSLayoutConstraint.activate([
-            exploreLabel.bottomAnchor.constraint(equalTo: listTipLabel.topAnchor, constant: 150),
-            exploreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            exploreLabel.bottomAnchor.constraint(equalTo: listTipLabel.topAnchor, constant: 200),
+            exploreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             exploreLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
 //        NSLayoutConstraint.activate([

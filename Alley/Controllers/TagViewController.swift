@@ -34,17 +34,23 @@ class TagViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
+        view.backgroundColor = .white
         tagLabel = UILabel()
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
         tagLabel.text = tag.label
         tagLabel.textColor = .black
         tagLabel.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
         view.addSubview(tagLabel)
+        
+        
+        
+        
+        
+        
         backButton = UIButton()
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setTitle("< back", for: .normal)
-        backButton.setTitleColor(.blue, for: .normal)
+        backButton.setTitle("< home", for: .normal)
+        backButton.setTitleColor(.gray, for: .normal)
         backButton.addTarget(self, action: #selector(dismissDashViewController), for: .touchUpInside)
         view.addSubview(backButton)
         
@@ -53,7 +59,7 @@ class TagViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 //        print(posts[0].content)
         postTableView = UITableView(frame: .zero)
         postTableView.translatesAutoresizingMaskIntoConstraints = false
-        postTableView.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
+        postTableView.backgroundColor = .white
         postTableView.dataSource = self
         postTableView.delegate = self
         postTableView.register(PostTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
@@ -83,6 +89,7 @@ class TagViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             ])
         NSLayoutConstraint.activate([
             tagLabel.bottomAnchor.constraint(equalTo: backButton.topAnchor, constant: 125),
+            tagLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             tagLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
         NSLayoutConstraint.activate([
