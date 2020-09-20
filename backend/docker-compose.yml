@@ -1,7 +1,7 @@
 version: "3"
 services:    
     alley:        
-        image: alley_v1            
+        image: olizhu10/alley_v1            
         ports:                
             - "5000:5000"        
     # <EXAMPLE OF MULTI-CONTAINER>        

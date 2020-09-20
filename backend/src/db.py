@@ -27,7 +27,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    tag_id = db.Column(db.String, db.ForeignKey('tag.id'), nullable=False)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'), nullable=False)
 
     def __init__(self, **kwargs):
         self.content = kwargs.get('content')
@@ -37,7 +37,9 @@ class Post(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'content': self.content
+            'content': self.content,
+            'user_id': self.user_id,
+            'tag_id': self.tag_id
         }
 
 

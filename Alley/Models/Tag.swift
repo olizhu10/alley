@@ -13,8 +13,21 @@ class Tag {
     var id: Int?
     var posts: [Post]
     
-    init(label:String) {
+    init(label:String) {//, posts: [Post]) {
         self.label = label
         self.posts = []
+    }
+    
+    static func toTags(tags: [Networking.Tag]?) -> [Tag] {
+        if tags == nil {
+            return []
+        }
+        var res : [Tag] = []
+        for tag in tags! {
+            let new_tag = Tag(label:tag.label)
+            new_tag.posts = Post.toPosts(posts: tag.posts)
+            res.append(new_tag) //, posts:Post.toPosts(posts: tag.data.posts)))
+        }
+        return res
     }
 }

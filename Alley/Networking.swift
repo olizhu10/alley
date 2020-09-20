@@ -9,28 +9,34 @@
 import Foundation
 import Alamofire
 
-struct APIResponse<T: Codable>: Codable {
-    let success: Bool
-    let data: T
-}
+//struct APIResponse<T: Codable>: Codable {
+//    let success: Bool
+//    let data: T
+//}
 
 
 final class Networking {
+    static let shared = Networking()
     let baseURL = "http://34.75.55.26/"
     
     struct Post : Codable {
         let id: Int
         let content: String
-        
-//        init(id: Int, content: String) {
-//            self.id = id
-//            self.content = content
-//        }
+//        let user_id: Int
+//        let tag_id: Int
     }
-    
-    struct Posts: Codable {
-        var data: [Post]
+
+    struct PostsObject: Codable {
+        var posts: [Post]
     }
+
+    struct PostsResponse: Codable {
+        var data: PostsObject
+    }
+//
+//    struct Posts: Codable {
+//        var data: [Post]
+//    }
     
     struct Tag: Codable {
         let id: Int
@@ -38,27 +44,37 @@ final class Networking {
         let posts: [Post]
     }
     
-    struct Tags: Codable {
+    struct TagsObject: Codable {
         var data: [Tag]
     }
     
-    // POSTS
-    func getPost(forPost postID: Int, _ completion: @escaping (Post) -> Void) {
-        let endpoint = baseURL+"posts/\(postID)/"
-        Alamofire.request(endpoint, method: .get).validate().responseData { response in
-            switch response.result {
-            case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let postData = try? jsonDecoder.decode(APIResponse<Post>.self, from: data) {
-                    completion(postData.data)
-                }
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+    struct TagsResponse: Codable {
+        var data: TagsObject
     }
+    
+    // POSTS
+//    func getPost(forPost postID: Int, _ completion: @escaping (Post) -> Void) {
+//        let endpoint = baseURL+"posts/\(postID)"
+//        print(endpoint)
+//        Alamofire.request(endpoint, method: .get).validate().responseData { response in
+//            print("post1")
+//            switch response.result {
+//            case .success(let data):
+//                print("post2")
+//                print(data)
+//                let jsonDecoder = JSONDecoder()
+//                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+//                if let postData = try? jsonDecoder.decode(Post.self, from: data) {
+//                    print("post3")
+//                    completion(postData)
+//                }
+//
+//            case .failure(let error):
+//                print("error")
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
     
     func getPosts(forPost postID: Int, _ completion: @escaping ([Post]) -> Void) {
         let endpoint = baseURL+"posts/"
@@ -67,8 +83,8 @@ final class Networking {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let postData = try? jsonDecoder.decode(APIResponse<Posts>.self, from: data) {
-                    completion(postData.data.data)
+                if let postData = try? jsonDecoder.decode(PostsResponse.self, from: data) {
+                    completion(postData.data.posts)
                 }
                 
             case .failure(let error):
@@ -78,35 +94,45 @@ final class Networking {
     }
     
     // TAGS
-    func getTag(forTag tagID: Int, _ completion: @escaping (Tag) -> Void) {
-        let endpoint = baseURL+"tags/\(tagID)/"
-        Alamofire.request(endpoint, method: .get).validate().responseData { response in
-            switch response.result {
-            case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let tagData = try? jsonDecoder.decode(APIResponse<Tag>.self, from: data) {
-                    completion(tagData.data)
-                }
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+//    func getTag(forTag tagID: Int, _ completion: @escaping (Tag) -> Void) {
+//        let endpoint = baseURL+"tags/\(tagID)/"
+//        Alamofire.request(endpoint, method: .get).validate().responseData { response in
+//            print("heree")
+//            switch response.result {
+//            case .success(let data):
+//                print("succ")
+//                let jsonDecoder = JSONDecoder()
+//                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+//                if let tagData = try? jsonDecoder.decode(Tag.self, from: data) {
+//                    print("single")
+//                    completion(tagData)
+//                }
+//                
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
     
-    func getTags(forPost postID: Int, _ completion: @escaping ([Tag]) -> Void) {
+    func getTags(_ completion: @escaping ([Tag]) -> Void) {
         let endpoint = baseURL+"tags/"
+        print(endpoint)
         Alamofire.request(endpoint, method: .get).validate().responseData { response in
+            print(response)
             switch response.result {
             case .success(let data):
+                print("in success")
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let tagData = try? jsonDecoder.decode(APIResponse<Tags>.self, from: data) {
-                    completion(tagData.data.data)
+                print("before decoding")
+                if let tagData = try? jsonDecoder.decode(TagsObject.self, from: data) {
+                    print("before completion")
+                    completion(tagData.data)//.data.tags)
+                    print("after completion")
                 }
-                
+                print("done")
             case .failure(let error):
+                print("failure")
                 print(error.localizedDescription)
             }
         }

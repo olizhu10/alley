@@ -18,7 +18,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     var posts: [Post]!
     var postTableView: UITableView!
 //    var tags: [String]!
-    var tags: [Tag]!
+    var tags = [Tag]()
 
     var tagTableView: UITableView!
     let reuseIdentifier = "tagCellReuse"
@@ -32,7 +32,6 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
     init() {
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,7 +42,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hue: 266/360, saturation: 13/100, brightness: 97/100, alpha: 1.0)
         welcomeLabel = UILabel()
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         welcomeLabel.text = "welcome to alley!"
@@ -85,39 +84,55 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(tagTableView)
         
         
-        let pimm = Post(content:"Immigration is crazy I am an immigrant adkfjlkadjlfkjkdlafjlkdsjfkljadsklfjakdlsfjkladsjfkld jskalfjkldjfkl", user_id: 1, tag_id: 1)
-        let prac = Post(content: "racism is bad dont be racist", user_id: 1, tag_id: 1)
-        let pgen = Post(content: "women should be equal i am a woman", user_id: 1, tag_id: 1)
-        let pcom = Post(content: "we should be in a supportive community", user_id: 1, tag_id: 1)
-        
+//        let pimm = Post(content:"Immigration is crazy I am an immigrant adkfjlkadjlfkjkdlafjlkdsjfkljadsklfjakdlsfjkladsjfkld jskalfjkldjfkl", user_id: 1, tag_id: 1)
+//        let prac = Post(content: "racism is bad dont be racist", user_id: 1, tag_id: 1)
+//        let pgen = Post(content: "women should be equal i am a woman", user_id: 1, tag_id: 1)
+//        let pcom = Post(content: "we should be in a supportive community", user_id: 1, tag_id: 1)
+//
 //        let immPosts = [pimm, prac]
 //        let racPosts = [pgen, pcom]
 
 
-        let imm = Tag(label:"#immigration")
-        imm.posts.append(pimm)
-        imm.posts.append(prac)
-        imm.posts.append(pimm)
-        let rac = Tag(label: "#racism")
-        rac.posts.append(pgen)
-        rac.posts.append(pcom)
-
-        let gen = Tag(label: "#lgbtqia")
-        let com = Tag(label: "#BLM")
-//        let soc = Tag(label: "#socialjustice")
-        let tra = Tag(label: "#transphobia")
 
         
         
-        
-        tags = [imm, rac, gen, com, tra]
+//        let imm = Tag(label: "#immigration")
+//        let rac = Tag(label: "#racism")
+//        let gen = Tag(label: "#gender inequality")
+//        let com = Tag(label: "#community")
+//
+//        tags = [imm, rac, gen, com]
+//        tags = []
+
+//        print(self.tags)
+
+//        let imm = Tag(label:"#immigration")
+//        imm.posts.append(pimm)
+//        imm.posts.append(prac)
+//        imm.posts.append(pimm)
+//        let rac = Tag(label: "#racism")
+//        rac.posts.append(pgen)
+//        rac.posts.append(pcom)
+//
+//        let gen = Tag(label: "#gender inequality")
+//        let com = Tag(label: "#community")
+//
+//
+//
+//        tags = [imm, rac, gen, com]
+
         viewHeight = view.frame.height
         self.tagTableView.rowHeight = 44;
         self.tagTableView.allowsSelection = true
-        
-        
+            
 
-
+        getTags()
+//        Networking.shared.getTag(forTag: 1) { (tag) in
+//            print(tag.label)
+//        }
+//        Networking.shared.getPost(forPost: 1) { (post) in
+//            print(post.content)
+//        }
         setupConstraints()
 
 
@@ -169,6 +184,15 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return tags.count
+    
+    }
+    func getTags() {
+        Networking.shared.getTags() { (tags) in
+            self.tags = Tag.toTags(tags: tags)
+            DispatchQueue.main.async {
+                self.tagTableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -225,6 +249,7 @@ class DashViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
 
+    
     /*
     // MARK: - Navigation
 
