@@ -93,12 +93,19 @@ def get_post(post_id):
 
 @app.route("/posts/", methods=["POST"])
 def create_post():
-    body = json.loads(request.data)
-    post = dao.create_post(
-        content=body.get('content'),
-        user_id=body.get('user_id')
-    )
-    return success_response(post, 201)
+    try:
+        body = json.loads(request.data)
+        post = dao.create_post(
+            content=body.get('content'),
+            user_id=body.get('user_id'),
+            tag_id=body.get('tag_id')
+        )
+        return success_response(post, 201)
+    except Exception as e:
+        return json.dumps({
+            'success': False,
+            'error': 'Exception: ' + str(e)
+        }), 400
 
 
 # ----TAG ROUTES----

@@ -37,7 +37,9 @@ class Post(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'content': self.content
+            'content': self.content,
+            'user_id': self.user_id,
+            'tag_id': self.tag_id
         }
 
 

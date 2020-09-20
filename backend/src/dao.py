@@ -57,10 +57,11 @@ def get_post_by_id(post_id):
     return post.serialize()
 
 
-def create_post(content, user_id):
+def create_post(content, user_id, tag_id):
     new_post = Post(
         content=content,
-        user_id=user_id
+        user_id=user_id,
+        tag_id=tag_id
     )
 
     db.session.add(new_post)
