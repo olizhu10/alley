@@ -43,7 +43,7 @@ class AddStoryViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        sampleTextField =  UITextField(frame: CGRect(x:40, y:230, width: 300, height: 200))
+        sampleTextField =  UITextField(frame: CGRect(x:40, y:230, width: 300, height: 150))
         sampleTextField.placeholder = "write your story..."
         sampleTextField.font = UIFont.systemFont(ofSize: 17)
         sampleTextField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -145,7 +145,7 @@ class AddStoryViewController: UIViewController, UITableViewDelegate, UITableView
             tagTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             tagTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:-120),
             tagTableView.topAnchor.constraint(equalTo: exploreLabel.bottomAnchor, constant: 20),
-            tagTableView.bottomAnchor.constraint(equalTo: tagTableView.topAnchor, constant: 140)
+            tagTableView.bottomAnchor.constraint(equalTo: tagTableView.topAnchor, constant: 190)
             ])
         NSLayoutConstraint.activate([
             postButton.topAnchor.constraint(equalTo: tagTableView.bottomAnchor, constant: 10),

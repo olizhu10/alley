@@ -9,7 +9,7 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    var discussionTag = Tag(label: "Discussions")
+    var discussionTag = Tag(label: "discussions")
     
     override func viewDidLoad() {
         super.viewDidLoad()
