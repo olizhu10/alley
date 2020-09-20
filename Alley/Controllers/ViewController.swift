@@ -73,14 +73,7 @@ class ViewController: UIViewController {
         present(dashViewController, animated: true, completion: nil)
 //        appDelegate.window?.rootViewController = UINavigationController(rootViewController: TabBarController())
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        appDelegate.setCheckPageFalse()
-//        
-////        if(!appDelegate.hasAlreadyLaunched){
-////            appDelegate.sethasAlreadyLaunched()
-////
-////        }
-//    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
