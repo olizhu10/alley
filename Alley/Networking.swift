@@ -53,28 +53,28 @@ final class Networking {
     }
     
     // POSTS
-//    func getPost(forPost postID: Int, _ completion: @escaping (Post) -> Void) {
-//        let endpoint = baseURL+"posts/\(postID)"
-//        print(endpoint)
-//        Alamofire.request(endpoint, method: .get).validate().responseData { response in
-//            print("post1")
-//            switch response.result {
-//            case .success(let data):
-//                print("post2")
-//                print(data)
-//                let jsonDecoder = JSONDecoder()
-//                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-//                if let postData = try? jsonDecoder.decode(Post.self, from: data) {
-//                    print("post3")
-//                    completion(postData)
-//                }
-//
-//            case .failure(let error):
-//                print("error")
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
+    func getPost(forPost postID: Int, _ completion: @escaping (Post) -> Void) {
+        let endpoint = baseURL+"posts/\(postID)"
+        print(endpoint)
+        Alamofire.request(endpoint, method: .get).validate().responseData { response in
+            print("post1")
+            switch response.result {
+            case .success(let data):
+                print("post2")
+                print(data)
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let postData = try? jsonDecoder.decode(Post.self, from: data) {
+                    print("post3")
+                    completion(postData)
+                }
+
+            case .failure(let error):
+                print("error")
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     func getPosts(forPost postID: Int, _ completion: @escaping ([Post]) -> Void) {
         let endpoint = baseURL+"posts/"
@@ -94,25 +94,25 @@ final class Networking {
     }
     
     // TAGS
-//    func getTag(forTag tagID: Int, _ completion: @escaping (Tag) -> Void) {
-//        let endpoint = baseURL+"tags/\(tagID)/"
-//        Alamofire.request(endpoint, method: .get).validate().responseData { response in
-//            print("heree")
-//            switch response.result {
-//            case .success(let data):
-//                print("succ")
-//                let jsonDecoder = JSONDecoder()
-//                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-//                if let tagData = try? jsonDecoder.decode(Tag.self, from: data) {
-//                    print("single")
-//                    completion(tagData)
-//                }
-//                
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
+    func getTag(forTag tagID: Int, _ completion: @escaping (Tag) -> Void) {
+        let endpoint = baseURL+"tags/\(tagID)/"
+        Alamofire.request(endpoint, method: .get).validate().responseData { response in
+            print("heree")
+            switch response.result {
+            case .success(let data):
+                print("succ")
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let tagData = try? jsonDecoder.decode(Tag.self, from: data) {
+                    print("single")
+                    completion(tagData)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     func getTags(_ completion: @escaping ([Tag]) -> Void) {
         let endpoint = baseURL+"tags/"

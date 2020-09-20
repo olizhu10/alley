@@ -108,6 +108,29 @@ def create_post():
         }), 400
 
 
+@app.route("/posts/<int:post_id>/", methods=["POST"])
+def update_post(post_id):
+    post = Post.query.filter_by(id=post_id).first()
+    if post is None:
+        return failure_response("Post not found!")
+
+    body = json.loads(request.data)
+    post.content = body.get('content', post.content)
+
+    db.session.commit()
+    return success_response(post.serialize())
+
+
+@app.route("/posts/<int:post_id>/", methods=["DELETE"])
+def delete_post(post_id):
+    post = Post.query.filter_by(id=post_id).first()
+    if post is None:
+        return failure_response("Post not found!")
+    db.session.delete(post)
+    db.session.commit()
+    return success_response(post.serialize())
+
+
 # ----TAG ROUTES----
 
 @app.route("/tags/")

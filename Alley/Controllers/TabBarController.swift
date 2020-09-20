@@ -9,9 +9,11 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    var discussionTag = Tag(label: "Discussions")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getTag()
         view.backgroundColor = UIColor(hue: 258/360, saturation: 23/100, brightness: 92/100, alpha: 1.0) /* #c6b5ed */
 
         
@@ -20,7 +22,7 @@ class TabBarController: UITabBarController {
 //        homeViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         
         let dashViewController = DashViewController()
-        let discViewController = DiscussionViewController()
+        let discViewController = DiscussionViewController(tag:discussionTag)
         let addViewController = AddStoryViewController()
 
 
@@ -48,6 +50,14 @@ class TabBarController: UITabBarController {
         viewControllers = tabBarList
 
         // Do any additional setup after loading the view.
+    }
+    func getTag() {
+        Networking.shared.getTag(forTag: 1) { (tag) in
+            self.discussionTag = Tag(label: tag.label)
+//            DispatchQueue.main.async {
+//                self.discu.reloadData()
+//            }
+        }
     }
     
 
