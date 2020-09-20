@@ -19,4 +19,4 @@ A safe space where people can discuss better ways to be an ally. Follow and cont
 Swift, XCode
 
 #### Backend:
-Python, Postman, Google Cloud, Docker, Flask
+Python, Postman, Google Cloud, Docker, Flask, SQLAlchemy
