@@ -10,13 +10,9 @@
 		2FC03C3A2516614000A9E079 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C392516614000A9E079 /* User.swift */; };
 		2FC03C3C2516623E00A9E079 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3B2516623E00A9E079 /* Post.swift */; };
 		2FC03C3E2516624700A9E079 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C3D2516624700A9E079 /* Tip.swift */; };
-<<<<<<< HEAD
-=======
-		2FC03C442516A16900A9E079 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C432516A16900A9E079 /* DashViewController.swift */; };
 		2FC03C462516A4A800A9E079 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FC03C452516A4A700A9E079 /* GoogleService-Info.plist */; };
 		2FC03C482516C21100A9E079 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C472516C21100A9E079 /* Tag.swift */; };
 		2FC03C4A2516D96300A9E079 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC03C492516D96300A9E079 /* Networking.swift */; };
->>>>>>> bc31404adc1dd6a365f4cdb0da6d56793a31adf0
 		4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3622515AE9500A87A24 /* AppDelegate.swift */; };
 		4326B3652515AE9500A87A24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326B3642515AE9500A87A24 /* ViewController.swift */; };
 		4326B3682515AE9500A87A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4326B3662515AE9500A87A24 /* Main.storyboard */; };
@@ -55,13 +51,10 @@
 		2FC03C392516614000A9E079 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2FC03C3B2516623E00A9E079 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2FC03C3D2516624700A9E079 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		2FC03C432516A16900A9E079 /* DashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
 		2FC03C452516A4A700A9E079 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FC03C472516C21100A9E079 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		2FC03C492516D96300A9E079 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
->>>>>>> bc31404adc1dd6a365f4cdb0da6d56793a31adf0
 		4326B35F2515AE9500A87A24 /* Alley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4326B3622515AE9500A87A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4326B3642515AE9500A87A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -171,11 +164,7 @@
 		4326B3612515AE9500A87A24 /* Alley */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				4326B39C2516C07C00A87A24 /* Cells */,
-				4326B3622515AE9500A87A24 /* AppDelegate.swift */,
-=======
->>>>>>> bc31404adc1dd6a365f4cdb0da6d56793a31adf0
 				2FC03C4125168C4B00A9E079 /* Controllers */,
 				2FC03C38251660CB00A9E079 /* Models */,
 				4326B3622515AE9500A87A24 /* AppDelegate.swift */,
@@ -469,12 +458,9 @@
 				4326B3652515AE9500A87A24 /* ViewController.swift in Sources */,
 				4326B3632515AE9500A87A24 /* AppDelegate.swift in Sources */,
 				2FC03C3A2516614000A9E079 /* User.swift in Sources */,
-<<<<<<< HEAD
 				4326B39E2516C09E00A87A24 /* TagTableViewCell.swift in Sources */,
-=======
 				2FC03C4A2516D96300A9E079 /* Networking.swift in Sources */,
 				2FC03C482516C21100A9E079 /* Tag.swift in Sources */,
->>>>>>> bc31404adc1dd6a365f4cdb0da6d56793a31adf0
 				2FC03C3E2516624700A9E079 /* Tip.swift in Sources */,
 				4326B3A02516DB9D00A87A24 /* TagViewController.swift in Sources */,
 				4326B3972516A2AA00A87A24 /* DashViewController.swift in Sources */,
