@@ -13,10 +13,10 @@ class DiscussionViewController: UIViewController {
     var tableView: UITableView!
     var titleLabel: UILabel!
     var reuseIdentifier = "reuseIdentifier"
-    var tag: Tag!
+    var posts: [Post]!
     
-    init(tag: Tag) {
-        self.tag = tag
+    init(posts: [Post]) {
+        self.posts = posts
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,21 +27,23 @@ class DiscussionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        print("Label: ", tag.label)
-        
+//        print("Label: ", tag.label)
+        getPosts()
+        print("after get posts")
+        print(posts)
         titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = tag.label
+        titleLabel.text = "discussions"
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 35, weight: .semibold)
         view.addSubview(titleLabel)
         
-//        tableView = UITableView(frame: CGRect(), style: .grouped)
+        
+        print(posts)    
         tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        tableView.backgroundColor = .none
-        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+//        tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
@@ -74,31 +76,37 @@ class DiscussionViewController: UIViewController {
 //            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func getPosts() {
+        Networking.shared.getPosts() { (posts) in
+            print(posts)
+            self.posts = Post.toPosts(posts:posts)
+            print(self.posts)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                print(self.posts)
+                print("data reloaded")
+            }
+        }
     }
-    */
 
 }
 
 extension DiscussionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 20
+        let height : CGFloat
+        height = 20
+        return height
     }
     
 }
 
 
 extension DiscussionViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return tag.posts.count
-        
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return self.posts.count
+//
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! PostTableViewCell
@@ -107,8 +115,9 @@ extension DiscussionViewController: UITableViewDataSource {
         cell.layer.cornerRadius = 15
         cell.layer.masksToBounds = true
 
-        let post = tag.posts[indexPath.section]
-        print("Posts :", post.content)
+        print(self.posts)
+        let post = self.posts[indexPath.section]
+        print(post.content)
         cell.configure(for: post)
         
         cell.setNeedsUpdateConstraints()
@@ -119,6 +128,9 @@ extension DiscussionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+
+        return self.posts.count
+
+//        return 1
     }
 }

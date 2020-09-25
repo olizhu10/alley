@@ -31,7 +31,7 @@ final class Networking {
     }
 
     struct PostsResponse: Codable {
-        var data: PostsObject
+        var data: [Post]
     }
 //
 //    struct Posts: Codable {
@@ -76,18 +76,22 @@ final class Networking {
         }
     }
     
-    func getPosts(forPost postID: Int, _ completion: @escaping ([Post]) -> Void) {
+    func getPosts(_ completion: @escaping ([Post]) -> Void) {
         let endpoint = baseURL+"posts/"
         Alamofire.request(endpoint, method: .get).validate().responseData { response in
+            print("sent reequest")
             switch response.result {
             case .success(let data):
+                print("successful request")
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 if let postData = try? jsonDecoder.decode(PostsResponse.self, from: data) {
-                    completion(postData.data.posts)
+                    print("decoded")
+                    completion(postData.data)
                 }
                 
             case .failure(let error):
+                print("failed request")
                 print(error.localizedDescription)
             }
         }
