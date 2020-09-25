@@ -20,23 +20,23 @@ A place for people to share and give others insight into their personal experien
 ## User Flow
 1. Splash Screen
 
-![Splash Screen](screens/splash-screen.png)
+<img src="screens/splash-screen.png" alt="Splash Screen" width=250>
 
 2. Home Dashboard
 
-![Dashboard Screen](screens/dash.png)
+<img src="screens/dash.png" alt="Dashboard Screen" width=250>
 
 3. Explore a Tag
 
-![Explore a tag](screens/explore-tag.png)
+<img src="screens/explore-tag.png" alt="Explore a tag" width=250>
 
 4. Discussion Boards
 
-![Discussion Boards](screens/discussions.png)
+<img src="screens/discussions.png" alt="Discussion Boards" width=250>
 
 5. Write a Post
 
-![Write a Post](screens/write-post.png)
+<img src="screens/write-post.png" alt="Write a Post" width=250>
 
 ## Tech Stack
 ### Frontend: 
